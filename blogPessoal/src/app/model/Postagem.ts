@@ -1,4 +1,4 @@
-export classs Postagem {
+export class Postagem {
 
     public id: number
     public titulo: string
