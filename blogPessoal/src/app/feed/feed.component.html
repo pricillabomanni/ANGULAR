@@ -50,12 +50,13 @@
 
                 <div class="form-group">
                     <label for="titulo" class="text-monospace">Titulo</label>
-                    <input type="text" name="titulo" id="titulo" class="form-control" placeholder="Digite seu titulo" [(ngModel)]="postagem.titulo">
+                    <input type="text" name="titulo" id="titulo" class="form-control" placeholder="Digite seu titulo"
+                        [(ngModel)]="postagem.titulo">
                 </div>
                 <div class="form-group">
                     <label for="texto" c3ass="text-monospace">Texto</label>
                     <textarea name="texto" id="texto" cols="30" rows="4" class="form-control"
-                        placeholder="Digite seu texto"[(ngModel)]="postagem.texto"></textarea>
+                        placeholder="Digite seu texto" [(ngModel)]="postagem.texto"></textarea>
                 </div>
 
                 <div class="d-flex justify-content-end">
@@ -68,6 +69,13 @@
 
             <h3 class="text-monospace text-center">Minhas Postagens</h3>
 
+            <div *ngIf = 'alerta'>
+
+            <div class="alert alert-success" role="alert">
+                Postagem deletada com sucesso!
+              </div>
+            </div>
+
             <div class="card mb-4" *ngFor='let postagem of listaPostagens | orderBy : key : reverse'>
 
                 <div class="card-header">
@@ -76,21 +84,26 @@
                             <h5 class="card-title">{{ postagem.titulo}}</h5>
                         </div>
 
-                        <div class="col-md-4 d-flex justify-content-end">  
+                        <div class="col-md-4 d-flex justify-content-end">
 
-                            <button class="btn btn-outline-info" [routerLink] = "['/editar', postagem.id]" >
+                            <button class="btn btn-outline-info mr-3" [routerLink]="['/editar', postagem.id]">
                                 Editar
                             </button>
-     
-                        </div>
 
+                            <button class="btn btn-outline-danger" [routerLink]="['/deletar', postagem.id]">
+                                Apagar
+                            </button>
+
+
+                        </div>
                     </div>
 
                 </div>
                 <div class="card-body">
                     <p class="card-text">{{ postagem.texto}}</p>
-                <small class="form-text m-0 text-muted mb-3 text-monospace"> Postado em {{postagem.data | date: 'dd/MM/yyyy'}} às {{postagem.data | date: 'HH:mm'}}  </small>
-                    
+                    <small class="form-text m-0 text-muted mb-3 text-monospace"> Postado em
+                        {{postagem.data | date: 'dd/MM/yyyy'}} às {{postagem.data | date: 'HH:mm'}} </small>
+
                 </div>
             </div>
 
