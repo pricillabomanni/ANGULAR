@@ -1,12 +1,8 @@
-package org.generation.blogPessoal.controller;
+package generation.org.blogPessoal.controller;
 
 import java.util.List;
 import java.util.Optional;
 
-import org.generation.blogPessoal.model.UserLogin;
-import org.generation.blogPessoal.model.Usuario;
-import org.generation.blogPessoal.repository.UsuarioRepository;
-import org.generation.blogPessoal.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +14,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import generation.org.blogPessoal.model.Usuario;
+import generation.org.blogPessoal.model.UsuarioLogin;
+import generation.org.blogPessoal.repository.UsuarioRepository;
+import generation.org.blogPessoal.service.UsuarioService;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -36,7 +37,7 @@ public class UsuarioController {
 	}
 
 	@PostMapping("/logar")
-	public ResponseEntity<UserLogin> Autentication(@RequestBody Optional<UserLogin> user) {
+	public ResponseEntity<UsuarioLogin> Autentication(@RequestBody Optional<UsuarioLogin> user) {
 		return usuarioService.Logar(user).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}

@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row my-5">
+        <div class="col-md-12">
+            <h1 class="text-center">Cadastrar</h1>
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-center my-5">
+        <div class="col-md-8">
+            <div>
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1"
+                        placeholder="Digite seu nome aqui" [(ngModel)]='user.nome'>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="exampleFormControlInput1"
+                        placeholder="name@example.com" [(ngModel)]='user.usuario'>
+                </div>
+                <div class="form-group">
+                    <label for="senha">Senha</label>
+                    <input type="password" class="form-control" id="exampleFormControlInput1"
+                        placeholder="Digite sua senha" (input)='conferirSenha($event)' value='{{senha}}'>
+                </div>
+                <div class="form-group">
+                    <label for="senhaConf">Confirmar senha</label>
+                    <input type="password" class="form-control" id="exampleFormControlInput1"
+                        placeholder="Digite sua senha" [(ngModel)]='user.senha'>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-outline-success w-25" (click)='cadastrar()'>Cadastrar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
